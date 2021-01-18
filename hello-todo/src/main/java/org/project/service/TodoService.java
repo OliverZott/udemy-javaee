@@ -14,6 +14,15 @@ import org.project.entity.Todo;
 @Transactional
 public class TodoService {
 
+    
+    /**
+     * Inject EntityManager
+     * 
+     * Persistence methods can only be invoked 
+     * on EntityManager inside Transaction (JPA specification!)
+     * 
+     * Dont want to manually create transactions (begin, commit, ...)
+     */
     @PersistenceContext
     EntityManager entityManager;
 
