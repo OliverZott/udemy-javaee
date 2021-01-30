@@ -1,6 +1,8 @@
-# Build
-mvn clean package && docker build -t org.projects/hello-todo .
+# javaee-fundamentals
 
-# RUN
-
-docker rm -f hello-todo || true && docker run -d -p 8080:8080 -p 4848:4848 --name hello-todo org.projects/hello-todo 
+Run application:
+- ` cd ~/IdeaProjects/udemy-javaee`
+- `mvn clean` and `mvn package`
+- `cd ~/IdeaProjects/`
+- `java -jar pm.jar --deploy /home/olli/Documents/Udemy/JavaEE/javaee-fundamentals/target/cdi-course-1.0-SNAPSHOT.war --port 8089`
+- http://192.168.0.158:8089/cdi-course-1.0-SNAPSHOT/

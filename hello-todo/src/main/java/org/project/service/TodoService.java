@@ -1,10 +1,14 @@
 package org.project.service;
 
-import java.util.List;
+import org.project.entity.Todo;
+
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import org.project.entity.Todo;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * https://www.udemy.com/course/java-enterprise-edition-8/learn/lecture/11004984#questions/8486950
@@ -14,13 +18,20 @@ import org.project.entity.Todo;
 @Transactional
 public class TodoService {
 
-    
+    private final static Logger logger = Logger.getLogger(TodoService.class.getName());
+
+    @PostConstruct
+    public void init() {
+        logger.log(Level.INFO, "Logger from inside 'TodoService' calling!");
+    }
+
+
     /**
      * Inject EntityManager
-     * 
-     * Persistence methods can only be invoked 
+     * <p>
+     * Persistence methods can only be invoked
      * on EntityManager inside Transaction (JPA specification!)
-     * 
+     * <p>
      * Dont want to manually create transactions (begin, commit, ...)
      */
     @PersistenceContext
